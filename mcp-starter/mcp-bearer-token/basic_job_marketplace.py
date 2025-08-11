@@ -561,4 +561,5 @@ async def main():
     await mcp.run_async("streamable-http", host="0.0.0.0", port=8086)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    await mcp.run_async("streamable-http", host="0.0.0.0", port=PORT)
+
