@@ -17,7 +17,7 @@ load_dotenv()
 
 TOKEN = os.environ.get("AUTH_TOKEN")
 MY_NUMBER = os.environ.get("MY_NUMBER")
-
+PORT=os.environ.get("PORT", 8086)
 assert TOKEN is not None, "Please set AUTH_TOKEN in your .env file"
 assert MY_NUMBER is not None, "Please set MY_NUMBER in your .env file"
 
@@ -557,9 +557,9 @@ async def main():
     print("Starting Basic Job Marketplace - Two Channels")
     print("Channel 1: Job Providers (Workers offering services)")
     print("Channel 2: Job Seekers (Customers needing services)")
-    print("Server running on http://0.0.0.0:8086")
-    await mcp.run_async("streamable-http", host="0.0.0.0", port=8086)
+    print(f"Server running on http://0.0.0.0:{PORT}")
+    await mcp.run_async("streamable-http", host="0.0.0.0", port=PORT)
 
 if __name__ == "__main__":
-    await mcp.run_async("streamable-http", host="0.0.0.0", port=PORT)
+    asyncio.run(main())
 
